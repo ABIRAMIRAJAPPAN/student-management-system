@@ -1,4 +1,4 @@
-package StudentRed;
+//package StudentRed;
 
 import java.awt.EventQueue;
 
@@ -18,11 +18,13 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
+import java.awt.Toolkit;
 
 public class StudentRed {
 
-	protected static final String JOptionPane = null;
-	private JFrame frame;
+	//protected static final String JOptionPane = null;
+	private JFrame frmStudentResultSystem;
 	private JTextField jtxtStudentID;
 	private JTextField jtxtFirstname;
 	private JTextField jtxtSurname;
@@ -43,48 +45,51 @@ public class StudentRed {
 	private JTextField textField;
 	private JTextField textField_1;
 
-	/**
-	 * Launch the application.
-	 */
 	 public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
 					StudentRed window = new StudentRed();
-					window.frame.setVisible(true);
+					window.frmStudentResultSystem.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 			}
 		});
 	}
-
-	/**
-	 * Create the application.
-	 */
 	 
+	 private void handleInvalidInput(double input, JTextField textField) {
+			if(input>100) {
+				textField.setText("");
+				textField.requestFocus();
+				SetTextAverage.setText("");
+				SetTextTotalScore.setText("");
+				SetTextRanking.setText("");
+			}
+		}
+
 	public StudentRed() { 
 		initialize();
 	
 	}
-	/**
-	 * Initialize the contents of the frame.
-	 */
+
 	private void initialize() {
-		frame = new JFrame();
-		frame.setBounds(0, 0, 1450, 620);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
+		frmStudentResultSystem = new JFrame();
+		frmStudentResultSystem.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\FAbdu\\Downloads\\student.png"));
+		frmStudentResultSystem.setTitle("Student Result Recording System");
+		frmStudentResultSystem.setBounds(0, 0, 1450, 620);
+		frmStudentResultSystem.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmStudentResultSystem.getContentPane().setLayout(null);
 		
 		JPanel panel = new JPanel();
 		panel.setBounds(293, 37, 15, -28);
-		frame.getContentPane().add(panel);
+		frmStudentResultSystem.getContentPane().add(panel);
 		
 		JPanel panel_1_1 = new JPanel();
 		panel_1_1.setBorder(new LineBorder(new Color(95, 158, 160), 12));
 		panel_1_1.setBackground(new Color(176, 224, 230));
 		panel_1_1.setBounds(1063, 19, 357, 446);
-		frame.getContentPane().add(panel_1_1);
+		frmStudentResultSystem.getContentPane().add(panel_1_1);
 		panel_1_1.setLayout(null);
 		
 		JTextArea textArea = new JTextArea();
@@ -99,7 +104,7 @@ public class StudentRed {
 		panel_1_1_1.setBorder(new LineBorder(new Color(95, 158, 160), 12));
 		panel_1_1_1.setBackground(new Color(176, 224, 230));
 		panel_1_1_1.setBounds(10, 472, 1410, 78);
-		frame.getContentPane().add(panel_1_1_1);
+		frmStudentResultSystem.getContentPane().add(panel_1_1_1);
 		panel_1_1_1.setLayout(null);
 		
 		JButton btnResult = new JButton("Result");
@@ -154,83 +159,88 @@ public class StudentRed {
 					{
 						SetTextRanking.setText("Fail");
 					}
+				
 //=====================Less than 100=====================
-					
-					if (R[1]> 100)
-					{
-						jtxtMaths.setText("");	
-						jtxtMaths.requestFocus();
-						SetTextAverage.setText("");
-						SetTextTotalScore.setText("");
-						SetTextRanking.setText("");
-					
-					}
-					
-					if (R[2]> 100)
-					{
-						jtxtEnglish.setText("");	
-						jtxtEnglish.requestFocus();
-						SetTextAverage.setText("");
-						SetTextTotalScore.setText("");
-						SetTextRanking.setText("");
-					
-					}
-					
-					if (R[3]> 100)
-					{
-						jtxtBiology.setText("");	
-						jtxtBiology.requestFocus();
-						SetTextAverage.setText("");
-						SetTextTotalScore.setText("");
-						SetTextRanking.setText("");
-						
-					}
-					
-					if (R[4]> 100)
-					{
-						jtxtComputing.setText("");	
-						jtxtComputing.requestFocus();
-						SetTextAverage.setText("");
-						SetTextTotalScore.setText("");
-						SetTextRanking.setText("");
-						
-					}
-					
-					if (R[5]> 100)
-					{
-						jtxtChem.setText("");	
-						jtxtChem.requestFocus();
-						SetTextAverage.setText("");
-						SetTextTotalScore.setText("");
-						SetTextRanking.setText("");
-						
-					}
-					
-					if (R[6]> 100)
-					{
-						jtxtPhy.setText("");	
-						jtxtPhy.requestFocus();
-						SetTextAverage.setText("");
-						SetTextTotalScore.setText("");
-						SetTextRanking.setText("");
-					}
-					
-					if (R[7]> 100)
-					{
-						jtxtBusiness.setText("");	
-						jtxtBusiness.requestFocus();
-						SetTextAverage.setText("");
-						SetTextTotalScore.setText("");
-						SetTextRanking.setText("");
-						
-				}
-					
-			}
-					
-			
+				
+				handleInvalidInput(R[0], jtxtMaths);
+				handleInvalidInput(R[1], jtxtEnglish);
+				handleInvalidInput(R[2], jtxtBiology);
+				handleInvalidInput(R[3], jtxtComputing);
+				handleInvalidInput(R[4], jtxtChem);
+				handleInvalidInput(R[5], jtxtPhy);
+				handleInvalidInput(R[6], jtxtAddM);
+				handleInvalidInput(R[7], jtxtBusiness);
+				
+//					if (R[1]> 100)
+//					{
+//						jtxtMaths.setText("");	
+//						jtxtMaths.requestFocus();
+//						SetTextAverage.setText("");
+//						SetTextTotalScore.setText("");
+//						SetTextRanking.setText("");
+//					
+//					}
+//					
+//					if (R[2]> 100)
+//					{
+//						jtxtEnglish.setText("");	
+//						jtxtEnglish.requestFocus();
+//						SetTextAverage.setText("");
+//						SetTextTotalScore.setText("");
+//						SetTextRanking.setText("");
+//					
+//					}
+//					
+//					if (R[3]> 100)
+//					{
+//						jtxtBiology.setText("");	
+//						jtxtBiology.requestFocus();
+//						SetTextAverage.setText("");
+//						SetTextTotalScore.setText("");
+//						SetTextRanking.setText("");
+//						
+//					}
+//					
+//					if (R[4]> 100)
+//					{
+//						jtxtComputing.setText("");	
+//						jtxtComputing.requestFocus();
+//						SetTextAverage.setText("");
+//						SetTextTotalScore.setText("");
+//						SetTextRanking.setText("");
+//						
+//					}
+//					
+//					if (R[5]> 100)
+//					{
+//						jtxtChem.setText("");	
+//						jtxtChem.requestFocus();
+//						SetTextAverage.setText("");
+//						SetTextTotalScore.setText("");
+//						SetTextRanking.setText("");
+//						
+//					}
+//					
+//					if (R[6]> 100)
+//					{
+//						jtxtPhy.setText("");	
+//						jtxtPhy.requestFocus();
+//						SetTextAverage.setText("");
+//						SetTextTotalScore.setText("");
+//						SetTextRanking.setText("");
+//					}
+//					
+//					if (R[7]> 100)
+//					{
+//						jtxtBusiness.setText("");	
+//						jtxtBusiness.requestFocus();
+//						SetTextAverage.setText("");
+//						SetTextTotalScore.setText("");
+//						SetTextRanking.setText("");		
+//				}			
+			}						
 		});
-		
-		
+			
 		btnResult.setFont(new Font("Tahoma", Font.BOLD, 25));
 		btnResult.setBounds(38, 23, 204, 33);
 		panel_1_1_1.add(btnResult);
@@ -256,12 +266,7 @@ public class StudentRed {
 				+ "\n                                    "
 				+ "\nTotal Score:\t\t" +SetTextTotalScore.getText()
 				+ "\nAverage:\t\t" +SetTextAverage.getText()
-				+ "\nRanking:\t\t" +SetTextRanking.getText()+"\n");
-		
-		
-				
-				
-				
+				+ "\nRanking:\t\t" +SetTextRanking.getText()+"\n");			
 			}
 		});
 		btnTranscript.setFont(new Font("Tahoma", Font.BOLD, 25));
@@ -270,22 +275,16 @@ public class StudentRed {
 		
 		JButton btnPrint = new JButton("Print");
 		btnPrint.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				
+			public void actionPerformed(ActionEvent e) {								
 				MessageFormat header = new MessageFormat ("printing in progress");
-				MessageFormat footer = new MessageFormat("page {0, number,integer}");
-				
+				MessageFormat footer = new MessageFormat("page {0, number,integer}");				
 				try
 				{
 					jtxtTranscript.print();
 				}
 				catch(java.awt.print.PrinterException ev){
 					System.err.format( "No Printer found",ev.getMessage());
-				}
-				
-				
-				
+				}												
 			}
 		});
 		btnPrint.setFont(new Font("Tahoma", Font.BOLD, 25));
@@ -316,13 +315,7 @@ public class StudentRed {
 				jtxtStudentID.setText(null);
 				jtxtFirstname.setText(null);
 				jtxtExamNo.setText(null);
-				jtxtSurname.setText(null);
-				
-				
-				
-				
-				
-				
+				jtxtSurname.setText(null);			
 			}
 		});
 		btnReset.setFont(new Font("Tahoma", Font.BOLD, 25));
@@ -333,13 +326,16 @@ public class StudentRed {
 		btnExit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				frame = new JFrame("Exit");
-				if (JOptionPane.showConfirmDialog(frame, "Confirm if you want to exit","Student Result System",
-						JOptionPane.YES_NO_OPTION)==JOptionPane.YES_NO_Option){
-				System.exit(0);	
+				int action = JOptionPane.showConfirmDialog(null, "Confirm if you want to exit", "Student Result System", JOptionPane.YES_NO_OPTION);
+				if(action==0) {
+					System.exit(1);
 				}
-				
-				
+//				
+//				frame = new JFrame("Exit");
+//				if (JOptionPane.showConfirmDialog(frame, "Confirm if you want to exit","Student Result System",
+//						JOptionPane.YES_NO_OPTION)==JOptionPane.YES_NO_Option){
+//				System.exit(0);	
+//				}				
 			}
 		});
 		btnExit.setFont(new Font("Tahoma", Font.BOLD, 25));
@@ -350,7 +346,7 @@ public class StudentRed {
 		panel_1_1_2.setBorder(new LineBorder(new Color(95, 158, 160), 12));
 		panel_1_1_2.setBackground(new Color(176, 224, 230));
 		panel_1_1_2.setBounds(10, 19, 1043, 446);
-		frame.getContentPane().add(panel_1_1_2);
+		frmStudentResultSystem.getContentPane().add(panel_1_1_2);
 		panel_1_1_2.setLayout(null);
 		
 		jtxtStudentID = new JTextField();
@@ -552,10 +548,5 @@ public class StudentRed {
 		panel_1_1_2.add(textField_1);
 		textField_1.setColumns(10);
 		
-	
-		
 		}
-	
 }
-	
-
